@@ -1,11 +1,12 @@
 import sys
 import os
+import time
 import unittest
 from unittest.mock import patch
 from unittest import mock
 sys.path.append(os.path.join(os.getcwd(), '..'))
-from main.common_functions import decode_message, encode_message, create_address, is_ip
-from main.settings import DEFAULT_IP, DEFAULT_PORT
+from main.common_functions import decode_message, encode_message, create_address, is_ip, send_message, receive_message
+from main.settings import DEFAULT_IP, DEFAULT_PORT, DEFAULT_ANSWERS
 
 
 class TestCommonFunctions(unittest.TestCase):
@@ -64,8 +65,22 @@ class TestCommonFunctions(unittest.TestCase):
 
     def test_send_message(self):
         client = mock.Mock()
-        client.send()
+        message = DEFAULT_ANSWERS['presence']
+        self.assertIsNone(send_message(client, message))
 
+    def test_receive_message(self):
+        msg = {
+            "action": "presence",
+            "time": time.time(),
+            "type": "status",
+            "user": {
+                "account_name": "guest",
+                "status": "I'm here"
+            }
+        }
+        client = mock.Mock()
+        client.recv.return_value = encode_message(msg)
+        self.assertEqual(receive_message(client), msg)
 
 
 if __name__ == '__main__':
