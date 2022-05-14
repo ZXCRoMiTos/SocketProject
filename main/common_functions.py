@@ -1,6 +1,7 @@
 from .settings import FORMAT, MESSAGE_SIZE, DEFAULT_IP, DEFAULT_PORT
 import json
 import sys
+import re
 
 
 def decode_message(message):
@@ -13,7 +14,9 @@ def decode_message(message):
 
 
 def encode_message(message):
-    return json.dumps(message, ensure_ascii=False).encode(FORMAT)
+    if isinstance(message, dict):
+        return json.dumps(message, ensure_ascii=False).encode(FORMAT)
+    raise TypeError
 
 
 def receive_message(client):
@@ -24,30 +27,39 @@ def send_message(client, message):
     client.send(encode_message(message))
 
 
+def is_ip(address):
+    try:
+        pattern = "([0-9]{1,3}[\.]){3}[0-9]{1,3}"
+        if re.search(pattern, address):
+            return True
+    except TypeError:
+        return False
+
+
 def create_address():
 
-    try:
-        if '-ip' in sys.argv:
-            ip = sys.argv[sys.argv.index('-ip') + 1]
+    if '-ip' in sys.argv:
+        input_ip = sys.argv[sys.argv.index('-ip') + 1]
+        if is_ip(input_ip):
+            ip = input_ip
         else:
-            ip = DEFAULT_IP
-    except IndexError:
-        print('После "-ip" нужно указать IP адрес.')
-        exit(1)
+            print('После "-ip" нужно указать IP адрес.')
+            exit(1)
+    else:
+        ip = DEFAULT_IP
+
     try:
         if '-p' in sys.argv:
             num = int(sys.argv[sys.argv.index('-p') + 1])
             if 1024 <= num <= 65535:
                 port = num
             else:
-                raise ValueError
+                print('Нужно указать порт в диапазоне 1024 - 65535.')
+                exit(2)
         else:
             port = DEFAULT_PORT
-    except IndexError:
-        print('После "-p" нужно указать порт.')
-        exit(2)
     except ValueError:
-        print('Нужно указать порт в диапазоне 1024 - 65535.')
+        print('После "-p" нужно указать порт.')
         exit(3)
 
     return ip, port

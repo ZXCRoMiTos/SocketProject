@@ -9,6 +9,7 @@ def server_start():
     server.listen(MAX_CONNECTIONS)
     while True:
         client, address = server.accept()
+        client.send()
         print(f'[SERVER] Connection with {address[0]}:{address[1]}.')
         message = receive_message(client)
         print(f'[SERVER] Message received - {message}.')
