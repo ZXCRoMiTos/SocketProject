@@ -1,6 +1,12 @@
 from main.common_functions import send_message, receive_message, create_address
+import logs.client_log
+import logging
 import socket
+import json
 import time
+
+
+CLIENT_LOGGER = logging.getLogger('client')
 
 
 def answer_parsing(message):
@@ -10,7 +16,10 @@ def answer_parsing(message):
 
 def main():
     client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    client.connect(create_address())
+    address = create_address()
+    client.connect(address)
+
+    CLIENT_LOGGER.debug(f'Client connect to {address}')
 
     msg = {
         "action": "presence",
@@ -23,7 +32,10 @@ def main():
     }
 
     send_message(client, msg)
-    answer_parsing(receive_message(client))
+    CLIENT_LOGGER.debug(f'Client send {json.dumps(msg)} to {address}')
+    message = receive_message(client)
+    CLIENT_LOGGER.debug(f'Client receive message {json.dumps(message)} from {address} ')
+    answer_parsing(message)
 
 
 if __name__ == '__main__':
