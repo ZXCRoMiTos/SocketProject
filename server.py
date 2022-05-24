@@ -1,6 +1,6 @@
 from main.common_functions import receive_message, send_message, create_address
 from main.settings import DEFAULT_ANSWERS, MAX_CONNECTIONS
-import logs.server_log
+import logs_config.server_log
 import logging
 import socket
 import json

@@ -1,9 +1,11 @@
 from .settings import FORMAT, MESSAGE_SIZE, DEFAULT_IP, DEFAULT_PORT
+from .decorators import log, Log
 import json
 import sys
 import re
 
 
+@log
 def decode_message(message):
     if isinstance(message, bytes):
         decoded_message = json.loads(message.decode(FORMAT))
@@ -13,20 +15,24 @@ def decode_message(message):
     raise ValueError
 
 
+@Log()
 def encode_message(message):
     if isinstance(message, dict):
         return json.dumps(message, ensure_ascii=False).encode(FORMAT)
     raise TypeError
 
 
+@log
 def receive_message(client):
     return decode_message(client.recv(MESSAGE_SIZE))
 
 
+@Log()
 def send_message(client, message):
     client.send(encode_message(message))
 
 
+@log
 def is_ip(address):
     try:
         pattern = "([0-9]{1,3}[\.]){3}[0-9]{1,3}"
@@ -36,6 +42,7 @@ def is_ip(address):
         return False
 
 
+@Log()
 def create_address():
 
     if '-ip' in sys.argv:

@@ -1,5 +1,5 @@
 from main.common_functions import send_message, receive_message, create_address
-import logs.client_log
+import logs_config.client_log
 import logging
 import socket
 import json

@@ -8,7 +8,8 @@ from main.settings import FORMAT, LOGGER_LEVEL
 CLIENT_FORMATTER = logging.Formatter('%(asctime)s - %(levelname)s - %(module)s - %(message)s')
 
 sys.path.append('../')
-PATH = os.path.dirname(os.path.abspath(__file__))
+PATH = '\\'.join(os.path.abspath(__file__).split('\\')[:-2])
+PATH = os.path.join(PATH, 'logs')
 PATH = os.path.join(PATH, 'client.log')
 
 STREAM_HANDLER = logging.StreamHandler(sys.stderr)
