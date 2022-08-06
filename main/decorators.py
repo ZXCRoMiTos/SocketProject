@@ -16,9 +16,12 @@ elif flag == 'server.py':
 
 def log(func):
     def wrapper(*args):
-        filename = inspect.stack()[-1].filename
-        calling_functions = traceback.format_stack()[0].strip().split()[-1]
-        LOGGER.debug(f'{filename} - {calling_functions} - {func.__name__} - {args}', stacklevel=2)
+        try:
+            filename = inspect.stack()[-1].filename
+            calling_functions = traceback.format_stack()[0].strip().split()[-1]
+            LOGGER.debug(f'{filename} - {calling_functions} - {func.__name__} - {args}', stacklevel=2)
+        except NameError:
+            pass
         return func(*args)
     return wrapper
 
@@ -26,8 +29,11 @@ def log(func):
 class Log:
     def __call__(self, func):
         def wrapper(*args):
-            filename = inspect.stack()[-1].filename
-            calling_functions = traceback.format_stack()[0].strip().split()[-1]
-            LOGGER.debug(f'{filename} - {calling_functions} - {func.__name__} - {args}', stacklevel=2)
+            try:
+                filename = inspect.stack()[-1].filename
+                calling_functions = traceback.format_stack()[0].strip().split()[-1]
+                LOGGER.debug(f'{filename} - {calling_functions} - {func.__name__} - {args}', stacklevel=2)
+            except NameError:
+                pass
             return func(*args)
         return wrapper

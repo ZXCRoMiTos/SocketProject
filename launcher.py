@@ -14,8 +14,8 @@ while True:
     elif ACTION == 's':
         PROCESS.append(subprocess.Popen('python server.py',
                                         creationflags=subprocess.CREATE_NEW_CONSOLE))
-        for _ in range(5):
-            PROCESS.append(subprocess.Popen('python client.py',
+        for num in range(5):
+            PROCESS.append(subprocess.Popen(f'python client.py -name testuser{num}',
                                             creationflags=subprocess.CREATE_NEW_CONSOLE))
     elif ACTION == 'c':
         for _ in range(5):
