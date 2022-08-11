@@ -10,10 +10,53 @@ from errors import IncorrectDataRecivedError
 from common.variables import *
 from common.utils import *
 from decos import log
+import dis
 
 
 # Инициализация логирования сервера.
 logger = logging.getLogger('server_dist')
+
+
+class ServerVerifier(type):
+
+    def __init__(cls, name, bases, namespace):
+
+        methods = []
+        attrs = []
+
+        for func in namespace:
+            try:
+                instructions = dis.get_instructions(namespace[func])
+            except TypeError:
+                pass
+            else:
+                for instruction in instructions:
+                    if instruction.opname == 'LOAD_GLOBAL':
+                        if instruction.argval not in methods:
+                            methods.append(instruction.argval)
+                    if instruction.opname == 'LOAD_ATTR':
+                        if instruction.argval not in attrs:
+                            attrs.append(instruction.argval)
+
+        forbidden_command = 'connect'
+        if forbidden_command in methods:
+            raise TypeError('Запрещенно использовать connect для серверного сокета.')
+
+        if not ('SOCK_STREAM' in attrs):
+            raise TypeError('Можно использовать соединение только по TCP.')
+
+        super().__init__(name, bases, namespace)
+
+
+class Port:
+
+    def __set__(self, instance, value):
+        if not 1023 < value < 65536:
+            logger.critical(f'Недопустимое значение порта - {value}.'), exit(1)
+        instance.__dict__[self.name] = value
+
+    def __set_name__(self, owner, name):
+        self.name = name
 
 
 # Парсер аргументов коммандной строки.
@@ -29,7 +72,9 @@ def arg_parser():
 
 
 # Основной класс сервера
-class Server:
+class Server(metaclass=ServerVerifier):
+
+    port = Port()
 
     def __init__(self, listen_address, listen_port):
         # Параметры подключения
