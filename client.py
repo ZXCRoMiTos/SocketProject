@@ -11,14 +11,43 @@ from common.variables import *
 from common.utils import *
 from errors import IncorrectDataRecivedError, ReqFieldMissingError, ServerError
 from decos import log
-
+import dis
 
 # Инициализация клиентского логера
 logger = logging.getLogger('client_dist')
 
 
+class ClientVerifier(type):
+
+    def __init__(cls, name, bases, namespace):
+
+        methods = []
+
+        for func in namespace:
+            try:
+                instructions = dis.get_instructions(namespace[func])
+            except TypeError:
+                pass
+            else:
+                for instruction in instructions:
+                    if instruction.opname == "LOAD_GLOBAL":
+                        if instruction.argval not in methods:
+                            methods.append(instruction.argval)
+
+        for forbidden_command in ['accept', 'listen', 'socket']:
+            if forbidden_command in methods:
+                raise TypeError('Запрещенно использовать accept, listen и socket для клиентского сокета.')
+
+        if 'get_message' in methods or 'send_message' in methods:
+            pass
+        else:
+            raise TypeError('Отсутствуют вызовы функций, работающих с сокетами.')
+
+        super().__init__(name, bases, namespace)
+
+
 # Класс формировки и отправки сообщений на сервер и взаимодействия с пользователем.
-class ClientSender(threading.Thread):
+class ClientSender(threading.Thread, metaclass=ClientVerifier):
     def __init__(self, account_name, sock):
         self.account_name = account_name
         self.sock = sock
@@ -82,7 +111,7 @@ class ClientSender(threading.Thread):
 
 
 # Класс-приёмник сообщений с сервера. Принимает сообщения, выводит в консоль.
-class ClientReader(threading.Thread):
+class ClientReader(threading.Thread, metaclass=ClientVerifier):
     def __init__(self, account_name, sock):
         self.account_name = account_name
         self.sock = sock
