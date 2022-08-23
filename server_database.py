@@ -1,5 +1,5 @@
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Integer, String, Text, DateTime, ForeignKey, Column, create_engine
+from sqlalchemy import Integer, String, DateTime, ForeignKey, Column, create_engine
 from sqlalchemy.orm import sessionmaker
 from datetime import datetime
 
@@ -46,8 +46,31 @@ class ServerStorage:
             self.ip_address = ip_address
             self.port = port
 
-    def __init__(self):
-        self.database_engine = create_engine('sqlite:///server_base.db3', echo=False, pool_recycle=7200)
+    class UsersContacts(Base):
+        __tablename__ = 'users_contacts'
+        id = Column(Integer, primary_key=True)
+        user_id = Column(Integer, ForeignKey('users.id'))
+        contact_id = Column(Integer, ForeignKey('users.id'))
+
+        def __init__(self, user_id, contact_id):
+            self.user_id = user_id
+            self.contact_id = contact_id
+
+    class ActionHistory(Base):
+        __tablename__ = 'action_history'
+        id = Column(Integer, primary_key=True)
+        user_id = Column(Integer, ForeignKey('users.id'))
+        sent = Column(Integer)
+        accepted = Column(Integer)
+
+        def __init__(self, user_id):
+            self.user_id = user_id
+            self.sent = 0
+            self.accepted = 0
+
+    def __init__(self, path):
+        self.database_engine = create_engine(f'sqlite:///{path}', echo=False, pool_recycle=7200,
+                                             connect_args={'check_same_thread': False})
         self.Base.metadata.create_all(self.database_engine)
         Session = sessionmaker(bind=self.database_engine)
         self.session = Session()
@@ -64,6 +87,8 @@ class ServerStorage:
             user = self.Users(username)
             self.session.add(user)
             self.session.commit()
+            user_in_history = self.ActionHistory(user.id)
+            self.session.add(user_in_history)
 
         active_user = self.ActiveUsers(user.id, ip_address, port)
         self.session.add(active_user)
@@ -94,3 +119,46 @@ class ServerStorage:
                                    self.UsersHistory.port).join(self.Users)
         return query.filter(self.Users.login == username).all() if username else query.all()
 
+    def process_message(self, sender, recipient):
+        sender_id = self.session.query(self.Users).filter_by(login=sender).first().id
+        recipient_id = self.session.query(self.Users).filter_by(login=recipient).first().id
+        sender_row = self.session.query(self.ActionHistory).filter_by(user_id=sender_id).first()
+        sender_row.sent += 1
+        recipient_row = self.session.query(self.ActionHistory).filter_by(user_id=recipient_id).first()
+        recipient_row.accepted += 1
+        self.session.commit()
+
+    def add_contact(self, username, contactname):
+        user = self.session.query(self.Users).filter_by(login=username).first()
+        contact = self.session.query(self.Users).filter_by(login=contactname).first()
+
+        if not contact or self.session.query(self.UsersContacts).\
+                filter_by(user_id=user.id, contact_id=contact.id).count():
+            return
+
+        new_contact = self.UsersContacts(user.id, contact.id)
+        self.session.add(new_contact)
+        self.session.commit()
+
+    def get_contacts(self, username):
+        user = self.session.query(self.Users).filter_by(login=username).first()
+        query = self.session.query(self.UsersContacts, self.Users.login).filter_by(user_id=user.id).\
+            join(self.Users, self.UsersContacts.contact_id == self.Users.id).all()
+        return [contact[1] for contact in query]
+
+    def remove_contact(self, username, contactname):
+        user = self.session.query(self.Users).filter_by(login=username).first()
+        contact = self.session.query(self.Users).filter_by(login=contactname).first()
+        if contact:
+            self.session.query(self.UsersContacts).filter_by(user_id=user.id, contact_id=contact.id).delete()
+            self.session.commit()
+
+
+if __name__ == '__main__':
+    database = ServerStorage()
+    database.user_login('test1', '192.168.1.1', 7777)
+    database.user_login('test2', '192.168.1.1', 7777)
+    database.add_contact('test1', 'test2')
+    print(database.get_contacts('test1'))
+    database.remove_contact('test1', 'test2')
+    print(database.get_contacts('test1'))
