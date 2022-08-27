@@ -19,14 +19,14 @@ class ClientStorage:
     class MessageHistory(Base):
         __tablename__ = 'message_history'
         id = Column(Integer, primary_key=True)
-        from_user = Column(String)
-        to_user = Column(String)
+        contact = Column(String)
+        direction = Column(String)
         message = Column(Text)
         date = Column(DateTime)
 
-        def __init__(self, from_user, to_user, message):
-            self.from_user = from_user
-            self.to_user = to_user
+        def __init__(self, contact, direction, message):
+            self.contact = contact
+            self.direction = direction
             self.message = message
             self.date = datetime.now()
 
@@ -60,7 +60,7 @@ class ClientStorage:
         self.session.query(self.Contacs).filter_by(username=username).delete()
         self.session.commit()
 
-    def check_contacts(self, username):
+    def check_contact(self, username):
         return True if self.session.query(self.Contacs).filter_by(username=username).count() else False
 
     def add_users(self, users_list):
@@ -76,25 +76,20 @@ class ClientStorage:
     def check_user(self, username):
         return True if self.session.query(self.KnownUsers).filter_by(username=username).count() else False
 
-    def save_message(self, from_user, to_user, message):
-        new_message = self.MessageHistory(from_user, to_user, message)
-        self.session.add(new_message)
+    def save_message(self, contact, direction, message):
+        message_row = self.MessageHistory(contact, direction, message)
+        self.session.add(message_row)
         self.session.commit()
 
     def delete_message_history(self):
         self.session.query(self.MessageHistory).delete()
         self.session.commit()
 
-    def get_message_history(self, from_user=None, to_user=None):
-        rows = self.session.query(self.MessageHistory)
-        if from_user and to_user:
-            rows = rows.filter_by(from_user=from_user, to_user=to_user)
-        elif from_user:
-            rows = rows.filter_by(from_user=from_user)
-        elif to_user:
-            rows = rows.filter_by(to_user=to_user)
-
-        return [(row.from_user, row.to_user, row.message, row.date) for row in rows.all()]
+    def get_history(self, contact):
+        query = self.session.query(self.MessageHistory).filter_by(contact=contact)
+        return [(history_row.contact, history_row.direction,
+                 history_row.message, history_row.date)
+                for history_row in query.all()]
 
 
 if __name__ == '__main__':
@@ -102,7 +97,7 @@ if __name__ == '__main__':
 
     print(database.get_contacts())
     database.add_contact('test1')
-    print(database.check_contacts('test1'))
+    print(database.check_contact('test1'))
     print(database.get_contacts())
     database.del_contact('test1')
     print(database.get_contacts())
@@ -115,8 +110,4 @@ if __name__ == '__main__':
     database.save_message('testuser1', 'testuser2', 'test message for test')
     database.save_message('testuser1', 'testuser3', 'test message for test')
     database.save_message('testuser3', 'testuser2', 'test message for test')
-    print(database.get_message_history())
-    print(database.get_message_history(from_user='testuser1'))
-    print(database.get_message_history(to_user='testuser2'))
-    print(database.get_message_history(from_user='testuser1', to_user='testuser2'))
-    print(database.get_message_history(from_user='unknown_user'))
+
