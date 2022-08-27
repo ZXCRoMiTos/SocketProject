@@ -150,6 +150,7 @@ class Server(threading.Thread, metaclass=ServerVerifier):
                                 break
                         self.clients.remove(client_with_message)
 
+
             # Если есть сообщения, обрабатываем каждое.
             for message in self.messages:
                 try:
