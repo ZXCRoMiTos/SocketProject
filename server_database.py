@@ -12,10 +12,12 @@ class ServerStorage:
         __tablename__ = 'users'
         id = Column(Integer, primary_key=True, autoincrement=True, nullable=False)
         login = Column(String, unique=True)
+        password = Column(String)
         last_entrance = Column(DateTime)
 
-        def __init__(self, login):
+        def __init__(self, login, password):
             self.login = login
+            self.password = password
             self.last_entrance = datetime.now()
 
     class ActiveUsers(Base):
@@ -77,19 +79,18 @@ class ServerStorage:
         self.session.query(self.ActiveUsers).delete()
         self.session.commit()
 
+    def registrate_user(self, username, password):
+        user = self.Users(username, password)
+        self.session.add(user)
+        self.session.commit()
+        user_in_history = self.ActionHistory(user.id)
+        self.session.add(user_in_history)
+        self.session.commit
+
     def user_login(self, username, ip_address, port):
-
         data = self.session.query(self.Users).filter_by(login=username)
-        if data.count():
-            user = data.first()
-            user.last_entrance = datetime.now()
-        else:
-            user = self.Users(username)
-            self.session.add(user)
-            self.session.commit()
-            user_in_history = self.ActionHistory(user.id)
-            self.session.add(user_in_history)
-
+        user = data.first()
+        user.last_entrance = datetime.now()
         active_user = self.ActiveUsers(user.id, ip_address, port)
         self.session.add(active_user)
 
@@ -97,6 +98,14 @@ class ServerStorage:
         self.session.add(user_history)
 
         self.session.commit()
+
+    def check_user(self, username):
+        data = self.session.query(self.Users).filter_by(login=username)
+        return True if data.count() else False
+    
+    def check_user_password(self, username, password):
+        data = self.session.query(self.Users).filter_by(login=username, password=password)
+        return True if data.count() else False
 
     def user_logout(self, username):
         user = self.session.query(self.Users).filter_by(login=username).first()

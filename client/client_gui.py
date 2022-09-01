@@ -1,5 +1,5 @@
 from PyQt5 import QtCore, QtWidgets
-from PyQt5.QtWidgets import QDialog, QLabel, QLineEdit, QPushButton, QComboBox
+from PyQt5.QtWidgets import QDialog, QLabel, QLineEdit, QPushButton, QComboBox, QApplication
 from PyQt5.QtGui import QFont
 from PyQt5.QtGui import QStandardItemModel, QStandardItem, QBrush, QColor
 from PyQt5.QtWidgets import QMainWindow, qApp, QMessageBox
@@ -103,7 +103,7 @@ class StartDialog(QDialog):
 
     def init_UI(self):
         self.setWindowTitle('Добро пожаловать')
-        self.setFixedSize(480, 185)
+        self.setFixedSize(470, 280)
 
         self.bold_font = QFont('Times', 18, QFont.Bold)
         self.normal_font = QFont('Times', 18)
@@ -119,23 +119,34 @@ class StartDialog(QDialog):
         self.client_name.setFixedSize(450, 40)
         self.client_name.move(10, 60)
 
+        self.label_password = QLabel('Введите пароль: ', self)
+        self.label_password.setFont(self.bold_font)
+        self.label_password.setFixedSize(450, 50)
+        self.label_password.move(10, 100)
+
+        self.client_password = QLineEdit(self)
+        self.client_password.setFont(self.reduced_font)
+        self.client_password.setFixedSize(450, 40)
+        self.client_password.move(10, 150)
+        self.client_password.setEchoMode(QLineEdit.Password)
+
         self.ok_pressed = False
         self.ok_btn = QPushButton('Начать', self)
         self.ok_btn.setFont(self.normal_font)
         self.ok_btn.setFixedSize(220, 60)
-        self.ok_btn.move(10, 110)
+        self.ok_btn.move(10, 210)
         self.ok_btn.clicked.connect(self.click)
 
         self.cancel_btn = QPushButton('Выход', self)
         self.cancel_btn.setFixedSize(220, 60)
         self.cancel_btn.setFont(self.normal_font)
-        self.cancel_btn.move(240, 110)
+        self.cancel_btn.move(240, 210)
         self.cancel_btn.clicked.connect(qApp.exit)
 
         self.show()
 
     def click(self):
-        if self.client_name.text():
+        if self.client_name.text() and self.client_password.text():
             self.ok_pressed = True
             qApp.exit()
 
@@ -423,3 +434,9 @@ class ClientMainWindow(QMainWindow):
     def make_connection(self, trans_obj):
         trans_obj.new_message.connect(self.message)
         trans_obj.connection_lost.connect(self.connection_lost)
+
+
+if __name__ == '__main__':
+    app = QApplication(sys.argv)
+    dialog = StartDialog()
+    app.exec_()

@@ -18,6 +18,7 @@ ACTION = 'action'
 TIME = 'time'
 USER = 'user'
 ACCOUNT_NAME = 'account_name'
+ACCOUNT_PASSWORD = 'account_password'
 SENDER = 'from'
 DESTINATION = 'to'
 

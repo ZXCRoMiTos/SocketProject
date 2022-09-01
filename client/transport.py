@@ -1,7 +1,9 @@
+import binascii
 from socket import socket, AF_INET, SOCK_STREAM
 from PyQt5.QtCore import QObject, pyqtSignal
 from threading import Thread, Lock
 from json import JSONDecodeError
+import hashlib
 import logging
 import time
 import sys
@@ -20,14 +22,22 @@ class ClientTransport(Thread, QObject):
     new_message = pyqtSignal(str)
     connection_lost = pyqtSignal()
 
-    def __init__(self, ip, port, database, username):
+    def __init__(self, ip, port, database, username, password):
         Thread.__init__(self)
         QObject.__init__(self)
         self.address = (ip, port)
         self.database = database
         self.username = username
+        self.password = self.hash_password(password)
         self.connection()
         self.update_database()
+
+    def hash_password(self, password):
+        password_bytes = password.encode('utf-8')
+        salt = self.username.lower().encode('utf-8')
+        password_hash = hashlib.pbkdf2_hmac('sha512', password_bytes, salt, 10000)
+        password_hash_string = binascii.hexlify(password_hash)
+        return password_hash_string.decode('utf-8')
 
     def connection(self):
         self.transport = socket(AF_INET, SOCK_STREAM)
@@ -66,7 +76,8 @@ class ClientTransport(Thread, QObject):
 
     def create_presense(self):
         logger.debug(f'Сформировано {PRESENCE} сообщение для пользователя {self.username}')
-        return {ACTION: PRESENCE, TIME: time.time(), USER: {ACCOUNT_NAME: self.username}}
+        return {ACTION: PRESENCE, TIME: time.time(),
+                USER: {ACCOUNT_NAME: self.username, ACCOUNT_PASSWORD: self.password}}
 
     def process_server_ans(self, message):
         logger.debug(f'Разбор сообщения от сервера: {message}')

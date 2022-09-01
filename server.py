@@ -183,10 +183,19 @@ class Server(threading.Thread, metaclass=ServerVerifier):
             # Если такой пользователь ещё не зарегистрирован, регистрируем,
             # иначе отправляем ответ и завершаем соединение.
             if message[USER][ACCOUNT_NAME] not in self.names.keys():
-                self.names[message[USER][ACCOUNT_NAME]] = client
-                client_ip, client_port = client.getpeername()
-                self.database.user_login(message[USER][ACCOUNT_NAME], client_ip, client_port)
-                send_message(client, RESPONSE_200)
+                if not self.database.check_user(message[USER][ACCOUNT_NAME]):
+                    self.database.registrate_user(message[USER][ACCOUNT_NAME], message[USER][ACCOUNT_PASSWORD])
+                if self.database.check_user_password(message[USER][ACCOUNT_NAME], message[USER][ACCOUNT_PASSWORD]):
+                    self.names[message[USER][ACCOUNT_NAME]] = client
+                    client_ip, client_port = client.getpeername()
+                    self.database.user_login(message[USER][ACCOUNT_NAME], client_ip, client_port)
+                    send_message(client, RESPONSE_200)
+                else:
+                    response = RESPONSE_400
+                    response[ERROR] = 'Неверный пароль.'
+                    send_message(client, response)
+                    self.clients.remove(client)
+                    client.close()
             else:
                 response = RESPONSE_400
                 response[ERROR] = 'Имя пользователя уже занято.'
