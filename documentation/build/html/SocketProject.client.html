@@ -1,0 +1,505 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>client package &#8212; SocketProject 1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="common package" href="SocketProject.common.html" />
+    <link rel="prev" title="Packages" href="SocketProject.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="client-package">
+<h1>client package<a class="headerlink" href="#client-package" title="Permalink to this heading">¶</a></h1>
+<section id="all-modules">
+<h2>all modules<a class="headerlink" href="#all-modules" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="module-SocketProject.client.client_database">
+<span id="database-module"></span><h2>database module<a class="headerlink" href="#module-SocketProject.client.client_database" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="SocketProject.client.client_database.ClientStorage">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">SocketProject.client.client_database.</span></span><span class="sig-name descname"><span class="pre">ClientStorage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SocketProject.client.client_database.ClientStorage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="SocketProject.client.client_database.ClientStorage.Base">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Base</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SocketProject.client.client_database.ClientStorage.Base" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>The base class of the class hierarchy.</p>
+<p>When called, it accepts no arguments and returns a new featureless
+instance that has no instance attributes and cannot be given any.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="SocketProject.client.client_database.ClientStorage.Base.metadata">
+<span class="sig-name descname"><span class="pre">metadata</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">MetaData()</span></em><a class="headerlink" href="#SocketProject.client.client_database.ClientStorage.Base.metadata" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="SocketProject.client.client_database.ClientStorage.Base.registry">
+<span class="sig-name descname"><span class="pre">registry</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;sqlalchemy.orm.decl_api.registry</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#SocketProject.client.client_database.ClientStorage.Base.registry" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="SocketProject.client.client_database.ClientStorage.Contacs">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Contacs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">username</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SocketProject.client.client_database.ClientStorage.Contacs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#SocketProject.client.client_database.ClientStorage.Base" title="sqlalchemy.orm.decl_api.Base"><code class="xref py py-class docutils literal notranslate"><span class="pre">Base</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="SocketProject.client.client_database.ClientStorage.Contacs.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#SocketProject.client.client_database.ClientStorage.Contacs.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="SocketProject.client.client_database.ClientStorage.Contacs.username">
+<span class="sig-name descname"><span class="pre">username</span></span><a class="headerlink" href="#SocketProject.client.client_database.ClientStorage.Contacs.username" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="SocketProject.client.client_database.ClientStorage.KnownUsers">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">KnownUsers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">username</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SocketProject.client.client_database.ClientStorage.KnownUsers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#SocketProject.client.client_database.ClientStorage.Base" title="sqlalchemy.orm.decl_api.Base"><code class="xref py py-class docutils literal notranslate"><span class="pre">Base</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="SocketProject.client.client_database.ClientStorage.KnownUsers.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#SocketProject.client.client_database.ClientStorage.KnownUsers.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="SocketProject.client.client_database.ClientStorage.KnownUsers.username">
+<span class="sig-name descname"><span class="pre">username</span></span><a class="headerlink" href="#SocketProject.client.client_database.ClientStorage.KnownUsers.username" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="SocketProject.client.client_database.ClientStorage.MessageHistory">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MessageHistory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">contact</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SocketProject.client.client_database.ClientStorage.MessageHistory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#SocketProject.client.client_database.ClientStorage.Base" title="sqlalchemy.orm.decl_api.Base"><code class="xref py py-class docutils literal notranslate"><span class="pre">Base</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="SocketProject.client.client_database.ClientStorage.MessageHistory.contact">
+<span class="sig-name descname"><span class="pre">contact</span></span><a class="headerlink" href="#SocketProject.client.client_database.ClientStorage.MessageHistory.contact" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="SocketProject.client.client_database.ClientStorage.MessageHistory.date">
+<span class="sig-name descname"><span class="pre">date</span></span><a class="headerlink" href="#SocketProject.client.client_database.ClientStorage.MessageHistory.date" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="SocketProject.client.client_database.ClientStorage.MessageHistory.direction">
+<span class="sig-name descname"><span class="pre">direction</span></span><a class="headerlink" href="#SocketProject.client.client_database.ClientStorage.MessageHistory.direction" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="SocketProject.client.client_database.ClientStorage.MessageHistory.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#SocketProject.client.client_database.ClientStorage.MessageHistory.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="SocketProject.client.client_database.ClientStorage.MessageHistory.message">
+<span class="sig-name descname"><span class="pre">message</span></span><a class="headerlink" href="#SocketProject.client.client_database.ClientStorage.MessageHistory.message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SocketProject.client.client_database.ClientStorage.add_contact">
+<span class="sig-name descname"><span class="pre">add_contact</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">username</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SocketProject.client.client_database.ClientStorage.add_contact" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SocketProject.client.client_database.ClientStorage.add_users">
+<span class="sig-name descname"><span class="pre">add_users</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">users_list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SocketProject.client.client_database.ClientStorage.add_users" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SocketProject.client.client_database.ClientStorage.check_contact">
+<span class="sig-name descname"><span class="pre">check_contact</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">username</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SocketProject.client.client_database.ClientStorage.check_contact" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SocketProject.client.client_database.ClientStorage.check_user">
+<span class="sig-name descname"><span class="pre">check_user</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">username</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SocketProject.client.client_database.ClientStorage.check_user" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SocketProject.client.client_database.ClientStorage.del_contact">
+<span class="sig-name descname"><span class="pre">del_contact</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">username</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SocketProject.client.client_database.ClientStorage.del_contact" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SocketProject.client.client_database.ClientStorage.delete_message_history">
+<span class="sig-name descname"><span class="pre">delete_message_history</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#SocketProject.client.client_database.ClientStorage.delete_message_history" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SocketProject.client.client_database.ClientStorage.get_contacts">
+<span class="sig-name descname"><span class="pre">get_contacts</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#SocketProject.client.client_database.ClientStorage.get_contacts" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SocketProject.client.client_database.ClientStorage.get_history">
+<span class="sig-name descname"><span class="pre">get_history</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">contact</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SocketProject.client.client_database.ClientStorage.get_history" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SocketProject.client.client_database.ClientStorage.get_users">
+<span class="sig-name descname"><span class="pre">get_users</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#SocketProject.client.client_database.ClientStorage.get_users" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SocketProject.client.client_database.ClientStorage.save_message">
+<span class="sig-name descname"><span class="pre">save_message</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">contact</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SocketProject.client.client_database.ClientStorage.save_message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-SocketProject.client.client_gui">
+<span id="gui-module"></span><h2>gui module<a class="headerlink" href="#module-SocketProject.client.client_gui" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="SocketProject.client.client_gui.AddContactDialog">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">SocketProject.client.client_gui.</span></span><span class="sig-name descname"><span class="pre">AddContactDialog</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">transport</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">database</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SocketProject.client.client_gui.AddContactDialog" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">QDialog</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="SocketProject.client.client_gui.AddContactDialog.add_possible_contacts">
+<span class="sig-name descname"><span class="pre">add_possible_contacts</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#SocketProject.client.client_gui.AddContactDialog.add_possible_contacts" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SocketProject.client.client_gui.AddContactDialog.init_UI">
+<span class="sig-name descname"><span class="pre">init_UI</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#SocketProject.client.client_gui.AddContactDialog.init_UI" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SocketProject.client.client_gui.AddContactDialog.update_possible_contacts">
+<span class="sig-name descname"><span class="pre">update_possible_contacts</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#SocketProject.client.client_gui.AddContactDialog.update_possible_contacts" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="SocketProject.client.client_gui.ClientMainWindow">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">SocketProject.client.client_gui.</span></span><span class="sig-name descname"><span class="pre">ClientMainWindow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">database</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transport</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SocketProject.client.client_gui.ClientMainWindow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">QMainWindow</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="SocketProject.client.client_gui.ClientMainWindow.add_contact">
+<span class="sig-name descname"><span class="pre">add_contact</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_contact</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SocketProject.client.client_gui.ClientMainWindow.add_contact" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SocketProject.client.client_gui.ClientMainWindow.add_contact_action">
+<span class="sig-name descname"><span class="pre">add_contact_action</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SocketProject.client.client_gui.ClientMainWindow.add_contact_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SocketProject.client.client_gui.ClientMainWindow.add_contact_window">
+<span class="sig-name descname"><span class="pre">add_contact_window</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#SocketProject.client.client_gui.ClientMainWindow.add_contact_window" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SocketProject.client.client_gui.ClientMainWindow.clients_list_update">
+<span class="sig-name descname"><span class="pre">clients_list_update</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#SocketProject.client.client_gui.ClientMainWindow.clients_list_update" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SocketProject.client.client_gui.ClientMainWindow.connection_lost">
+<span class="sig-name descname"><span class="pre">connection_lost</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#SocketProject.client.client_gui.ClientMainWindow.connection_lost" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SocketProject.client.client_gui.ClientMainWindow.delete_contact">
+<span class="sig-name descname"><span class="pre">delete_contact</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">contact</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SocketProject.client.client_gui.ClientMainWindow.delete_contact" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SocketProject.client.client_gui.ClientMainWindow.delete_contact_window">
+<span class="sig-name descname"><span class="pre">delete_contact_window</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#SocketProject.client.client_gui.ClientMainWindow.delete_contact_window" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SocketProject.client.client_gui.ClientMainWindow.history_list_update">
+<span class="sig-name descname"><span class="pre">history_list_update</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#SocketProject.client.client_gui.ClientMainWindow.history_list_update" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SocketProject.client.client_gui.ClientMainWindow.init_UI">
+<span class="sig-name descname"><span class="pre">init_UI</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#SocketProject.client.client_gui.ClientMainWindow.init_UI" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SocketProject.client.client_gui.ClientMainWindow.make_connection">
+<span class="sig-name descname"><span class="pre">make_connection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">trans_obj</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SocketProject.client.client_gui.ClientMainWindow.make_connection" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SocketProject.client.client_gui.ClientMainWindow.message">
+<span class="sig-name descname"><span class="pre">message</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sender</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SocketProject.client.client_gui.ClientMainWindow.message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SocketProject.client.client_gui.ClientMainWindow.select_active_user">
+<span class="sig-name descname"><span class="pre">select_active_user</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#SocketProject.client.client_gui.ClientMainWindow.select_active_user" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SocketProject.client.client_gui.ClientMainWindow.send_message">
+<span class="sig-name descname"><span class="pre">send_message</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#SocketProject.client.client_gui.ClientMainWindow.send_message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SocketProject.client.client_gui.ClientMainWindow.set_active_user">
+<span class="sig-name descname"><span class="pre">set_active_user</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#SocketProject.client.client_gui.ClientMainWindow.set_active_user" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SocketProject.client.client_gui.ClientMainWindow.set_disabled_input">
+<span class="sig-name descname"><span class="pre">set_disabled_input</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#SocketProject.client.client_gui.ClientMainWindow.set_disabled_input" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="SocketProject.client.client_gui.DeleteContactDialog">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">SocketProject.client.client_gui.</span></span><span class="sig-name descname"><span class="pre">DeleteContactDialog</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">database</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SocketProject.client.client_gui.DeleteContactDialog" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">QDialog</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="SocketProject.client.client_gui.DeleteContactDialog.init_UI">
+<span class="sig-name descname"><span class="pre">init_UI</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#SocketProject.client.client_gui.DeleteContactDialog.init_UI" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="SocketProject.client.client_gui.StartDialog">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">SocketProject.client.client_gui.</span></span><span class="sig-name descname"><span class="pre">StartDialog</span></span><a class="headerlink" href="#SocketProject.client.client_gui.StartDialog" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">QDialog</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="SocketProject.client.client_gui.StartDialog.click">
+<span class="sig-name descname"><span class="pre">click</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#SocketProject.client.client_gui.StartDialog.click" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SocketProject.client.client_gui.StartDialog.init_UI">
+<span class="sig-name descname"><span class="pre">init_UI</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#SocketProject.client.client_gui.StartDialog.init_UI" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="SocketProject.client.client_gui.Ui_MainClientWindow">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">SocketProject.client.client_gui.</span></span><span class="sig-name descname"><span class="pre">Ui_MainClientWindow</span></span><a class="headerlink" href="#SocketProject.client.client_gui.Ui_MainClientWindow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="SocketProject.client.client_gui.Ui_MainClientWindow.retranslateUi">
+<span class="sig-name descname"><span class="pre">retranslateUi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">MainClientWindow</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SocketProject.client.client_gui.Ui_MainClientWindow.retranslateUi" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SocketProject.client.client_gui.Ui_MainClientWindow.setupUi">
+<span class="sig-name descname"><span class="pre">setupUi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">MainClientWindow</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SocketProject.client.client_gui.Ui_MainClientWindow.setupUi" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-SocketProject.client.transport">
+<span id="transport-module"></span><h2>transport module<a class="headerlink" href="#module-SocketProject.client.transport" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="SocketProject.client.transport.ClientTransport">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">SocketProject.client.transport.</span></span><span class="sig-name descname"><span class="pre">ClientTransport</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ip</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">port</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">database</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">username</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SocketProject.client.transport.ClientTransport" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Thread</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">QObject</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="SocketProject.client.transport.ClientTransport.add_contact">
+<span class="sig-name descname"><span class="pre">add_contact</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">contact</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SocketProject.client.transport.ClientTransport.add_contact" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SocketProject.client.transport.ClientTransport.connection">
+<span class="sig-name descname"><span class="pre">connection</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#SocketProject.client.transport.ClientTransport.connection" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="SocketProject.client.transport.ClientTransport.connection_lost">
+<span class="sig-name descname"><span class="pre">connection_lost</span></span><a class="headerlink" href="#SocketProject.client.transport.ClientTransport.connection_lost" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SocketProject.client.transport.ClientTransport.contact_list_update">
+<span class="sig-name descname"><span class="pre">contact_list_update</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#SocketProject.client.transport.ClientTransport.contact_list_update" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SocketProject.client.transport.ClientTransport.create_presense">
+<span class="sig-name descname"><span class="pre">create_presense</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#SocketProject.client.transport.ClientTransport.create_presense" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SocketProject.client.transport.ClientTransport.hash_password">
+<span class="sig-name descname"><span class="pre">hash_password</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">password</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SocketProject.client.transport.ClientTransport.hash_password" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="SocketProject.client.transport.ClientTransport.new_message">
+<span class="sig-name descname"><span class="pre">new_message</span></span><a class="headerlink" href="#SocketProject.client.transport.ClientTransport.new_message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SocketProject.client.transport.ClientTransport.process_server_ans">
+<span class="sig-name descname"><span class="pre">process_server_ans</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SocketProject.client.transport.ClientTransport.process_server_ans" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SocketProject.client.transport.ClientTransport.remove_contact">
+<span class="sig-name descname"><span class="pre">remove_contact</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">contact</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SocketProject.client.transport.ClientTransport.remove_contact" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SocketProject.client.transport.ClientTransport.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#SocketProject.client.transport.ClientTransport.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method representing the thread’s activity.</p>
+<p>You may override this method in a subclass. The standard run() method
+invokes the callable object passed to the object’s constructor as the
+target argument, if any, with sequential and keyword arguments taken
+from the args and kwargs arguments, respectively.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SocketProject.client.transport.ClientTransport.send_message">
+<span class="sig-name descname"><span class="pre">send_message</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">destination</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message_text</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#SocketProject.client.transport.ClientTransport.send_message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SocketProject.client.transport.ClientTransport.transport_shutdown">
+<span class="sig-name descname"><span class="pre">transport_shutdown</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#SocketProject.client.transport.ClientTransport.transport_shutdown" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SocketProject.client.transport.ClientTransport.update_database">
+<span class="sig-name descname"><span class="pre">update_database</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#SocketProject.client.transport.ClientTransport.update_database" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SocketProject.client.transport.ClientTransport.user_list_update">
+<span class="sig-name descname"><span class="pre">user_list_update</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#SocketProject.client.transport.ClientTransport.user_list_update" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">SocketProject</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">SocketProject</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="SocketProject.html">Packages</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">client package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#all-modules">all modules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-SocketProject.client.client_database">database module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-SocketProject.client.client_gui">gui module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-SocketProject.client.transport">transport module</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="SocketProject.common.html">common package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SocketProject.logs.html">logs package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="SocketProject.html#submodules">Submodules</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="modules.html">SocketProject</a><ul>
+  <li><a href="SocketProject.html">Packages</a><ul>
+      <li>Previous: <a href="SocketProject.html" title="previous chapter">Packages</a></li>
+      <li>Next: <a href="SocketProject.common.html" title="next chapter">common package</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, Danila.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.1.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/SocketProject.client.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
