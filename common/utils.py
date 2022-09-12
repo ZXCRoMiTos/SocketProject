@@ -1,7 +1,6 @@
-from common.variables import *
-from errors import IncorrectDataRecivedError, NonDictInputError
 import json
 import sys
+from common.variables import *
 sys.path.append('../')
 from decos import log
 

@@ -5,7 +5,6 @@ from datetime import datetime
 
 
 class ClientStorage:
-
     Base = declarative_base()
 
     class KnownUsers(Base):
@@ -90,24 +89,3 @@ class ClientStorage:
         return [(history_row.contact, history_row.direction,
                  history_row.message, history_row.date)
                 for history_row in query.all()]
-
-
-if __name__ == '__main__':
-    database = ClientStorage('some_name')
-
-    print(database.get_contacts())
-    database.add_contact('test1')
-    print(database.check_contact('test1'))
-    print(database.get_contacts())
-    database.del_contact('test1')
-    print(database.get_contacts())
-
-    database.add_users(['usertest1', 'usertest2'])
-    print(database.get_users())
-    print(database.check_user('usertest2'))
-
-    database.delete_message_history()
-    database.save_message('testuser1', 'testuser2', 'test message for test')
-    database.save_message('testuser1', 'testuser3', 'test message for test')
-    database.save_message('testuser3', 'testuser2', 'test message for test')
-

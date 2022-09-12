@@ -1,18 +1,22 @@
-import socket
 import argparse
-import select
-import threading
-import dis
-from common.variables import *
-from common.utils import *
-from decos import log
-from server_database import ServerStorage
 import configparser
+import dis
+import logging
 import os
+import select
+import socket
+import sys
+import threading
+
 from PyQt5.QtCore import QTimer
 from PyQt5.QtWidgets import QApplication, QMessageBox
-from server_gui import MainWindow, HistoryWindow, ConfigWindow, create_gui_model, create_stat_model
 
+
+from common.utils import *
+from common.variables import *
+from decos import log
+from server_database import ServerStorage
+from server_gui import MainWindow, HistoryWindow, ConfigWindow, create_gui_model, create_stat_model
 
 # Инициализация логирования сервера.
 logger = logging.getLogger('server_dist')
@@ -335,3 +339,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+    

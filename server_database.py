@@ -161,13 +161,3 @@ class ServerStorage:
         if contact:
             self.session.query(self.UsersContacts).filter_by(user_id=user.id, contact_id=contact.id).delete()
             self.session.commit()
-
-
-if __name__ == '__main__':
-    database = ServerStorage()
-    database.user_login('test1', '192.168.1.1', 7777)
-    database.user_login('test2', '192.168.1.1', 7777)
-    database.add_contact('test1', 'test2')
-    print(database.get_contacts('test1'))
-    database.remove_contact('test1', 'test2')
-    print(database.get_contacts('test1'))
